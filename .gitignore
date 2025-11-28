@@ -1,0 +1,17 @@
+# Rust / Cargo
+target/
+**/*.rs.bk
+Cargo.lock
+
+# Editor / OS junk
+.DS_Store
+Thumbs.db
+
+# IDE / tooling
+.idea/
+.vscode/
+*.iml
+
+# mdBook build output (if you keep example books in this repo)
+book/
+**/book/
