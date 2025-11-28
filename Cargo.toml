@@ -1,9 +1,19 @@
 [package]
 name = "mdbook-content-loader"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 description = "Injects content-collections.json into mdBook pages as a global variable"
 license = "Apache-2.0"
+repository = "https://github.com/saylesss88/mdbook-content-collections"
+readme = "README.md"
+keywords = [
+	"mdbook",
+	"content-collections",
+	"frontmatter",
+	"preprocessor",
+	"schema",
+]
+categories = ["command-line-utilities", "web-programming", "development-tools"]
 
 [dependencies]
 mdbook-preprocessor = "0.5.1"
