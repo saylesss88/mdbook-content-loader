@@ -1,6 +1,6 @@
 [package]
 name = "mdbook-content-loader"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Injects content-collections.json into mdBook pages as a global variable"
 license = "Apache-2.0"
@@ -10,7 +10,7 @@ mdbook-preprocessor = "0.5.1"
 serde = {version = "1.0", features = ["derive"]}
 serde_json = "1.0"
 log = "0.4"
-env_logger = "0.10"
+env_logger = "0.11.8"
 chrono = {version = "0.4", features = ["clock"]}
 anyhow = "1.0"
 semver = "1.0"
