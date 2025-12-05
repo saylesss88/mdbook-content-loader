@@ -197,6 +197,8 @@ See:
 
 - [mdbook-kanagawa-theme](https://crates.io/crates/mdbook-kanagawa-theme)
 
+![mdbook-kanagawa](assets/swappy-20251130-144149.cleaned.png)
+
 ### License
 
 [Apache License 2.0](https://github.com/saylesss88/mdbook-content-loader/blob/main/LICENSE)
