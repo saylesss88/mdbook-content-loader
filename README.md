@@ -194,6 +194,10 @@ back to `collections.posts` if there are no blog items.
 Want a sidebar? Tag cloud? Search index? Related posts? Just read from
 `window.CONTENT_COLLECTIONS`.
 
+What the landing page looks like after adding the above code block:
+
+![content-loader](https://raw.githubusercontent.com/saylesss88/mdbook-kanagawa-theme/main/assets/content-loader.png)
+
 ---
 
 ## Common patterns
