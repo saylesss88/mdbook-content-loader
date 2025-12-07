@@ -131,9 +131,9 @@ Chapters with the latest `date` will be listed first. Chapters with
 
 Drop this anywhere in `theme/index.hbs` (or any `.hbs` file).
 
-For example, placing it directly after this block works, and you'll have a
-landing page of your "Latest Edited Posts" placed right above the prev/next
-buttons:
+For example, placing it directly between `<main>` and `</main>` works, and
+you'll have a landing page of your "Latest Edited Posts" placed right above the
+prev/next buttons:
 
 ```js
 <main>
