@@ -196,7 +196,7 @@ Want a sidebar? Tag cloud? Search index? Related posts? Just read from
 
 What the landing page looks like after adding the above code block:
 
-![content-loader](https://raw.githubusercontent.com/saylesss88/mdbook-kanagawa-theme/main/assets/content-loader.png)
+![content-loader](https://raw.githubusercontent.com/saylesss88/mdbook-content-loader/main/assets/content-loader.png)
 
 ---
 
