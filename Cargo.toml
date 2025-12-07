@@ -1,6 +1,6 @@
 [package]
 name = "mdbook-content-loader"
-version = "0.1.9"
+version = "0.1.10"
 edition = "2024"
 authors = ["T. Sawyer saylesss88@github.com"]
 description = "Injects content-collections.json into mdBook pages as a global variable"
