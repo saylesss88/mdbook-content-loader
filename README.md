@@ -136,21 +136,13 @@ landing page of your "Latest Edited Posts" placed right above the prev/next
 buttons:
 
 ```js
-<nav class="nav-wrapper" aria-label="Page navigation">
-<!-- Mobile navigation buttons -->
-{{#if previous}}
-    <a rel="prev" href="{{ path_to_root }}{{previous.link}}" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-        {{#if (eq ../text_direction "rtl")}}
-        {{fa "solid" "angle-right"}}
-        {{else}}
-        {{fa "solid" "angle-left"}}
-        {{/if}}
-    </a>
-{{/if}}
-// <div id="latest-posts"></div>
+<main>
+    {{{ content }}}
+    <!-- place "latest-posts" snippet here-- >
+</main>
 ```
 
-Add the following block:
+Add the following block right below `{{{ content }}}`:
 
 ```html
 <div id="latest-posts"></div>
@@ -182,6 +174,10 @@ Add the following block:
 </script>
 ```
 
+What the landing page will look like after adding the above code block:
+
+![mdbook-content-loader](https://raw.githubusercontent.com/saylesss88/mdbook-content-loader/main/assets/content-loader-example.png)
+
 Entries with `collection: "blog"` end up in
 `window.CONTENT_COLLECTIONS.collections.blog`.
 
@@ -193,10 +189,6 @@ back to `collections.posts` if there are no blog items.
 
 Want a sidebar? Tag cloud? Search index? Related posts? Just read from
 `window.CONTENT_COLLECTIONS`.
-
-What the landing page looks like after adding the above code block:
-
-![content-loader](https://raw.githubusercontent.com/saylesss88/mdbook-content-loader/main/assets/content-loader.png)
 
 ---
 
