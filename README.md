@@ -62,6 +62,8 @@ date, description, tags, optional `collection`, `preview_html`, and `draft`
 stripped out), so your theme code can immediately render lists, sidebars, tag
 clouds, and “related posts” without any extra parsing or network calls.
 
+---
+
 ## Installation
 
 ```bash
@@ -101,6 +103,29 @@ of your `SUMMARY.md`:
 ```
 
 Then run `mdbook build` to create it.
+
+---
+
+## Frontmatter Example
+
+`mdbook-content-loader` injects the collection `blog` into `index.md` by
+default, so for a chapter to be listed on the landing, the frontmatter would
+look like:
+
+```yaml
+---
+title: "My first note"
+date: 2025-12-07
+collection: "blog"
+description: "Short note about using mdbook-content-loader."
+draft: false
+---
+```
+
+Chapters with the latest `date` will be listed first. Chapters with
+`draft: true` will be skipped.
+
+---
 
 ## Usage in your theme
 
@@ -157,8 +182,19 @@ Add the following block:
 </script>
 ```
 
+Entries with `collection: "blog"` end up in
+`window.CONTENT_COLLECTIONS.collections.blog`.
+
+Entries with `collection: "posts"` or with no collection at all end up in
+`window.CONTENT_COLLECTIONS.collections.posts` as a general “all posts” bucket.
+
+The “Latest posts” example code first prefers `collections.blog` and only falls
+back to `collections.posts` if there are no blog items.
+
 Want a sidebar? Tag cloud? Search index? Related posts? Just read from
 `window.CONTENT_COLLECTIONS`.
+
+---
 
 ## Common patterns
 
@@ -172,6 +208,8 @@ window.CONTENT_COLLECTIONS.entries;
 // Posts with tag "rust"
 window.CONTENT_COLLECTIONS.entries.filter((p) => p.tags.includes("rust"));
 ```
+
+---
 
 ## Data Shape of content-collections.json
 
@@ -193,11 +231,13 @@ Same as `mdbook-content-collections`, plus:
 See:
 [mdbook-content-collections](https://crates.io/crates/mdbook-content-collections)
 
+---
+
 ## Example Project built with content-collections / content-loader
 
 - [mdbook-kanagawa-theme](https://crates.io/crates/mdbook-kanagawa-theme)
 
-![mdbook-kanagawa](assets/swappy-20251130-144149.cleaned.png)
+![mdbook-kanagawa](https://raw.githubusercontent.com/saylesss88/mdbook-kanagawa-theme/main/assets/swappy-20251130-142446.cleaned.png)
 
 ### License
 
