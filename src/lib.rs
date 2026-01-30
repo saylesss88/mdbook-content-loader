@@ -1,11 +1,11 @@
-use anyhow::{bail, Context};
+use anyhow::{Context, bail};
 use chrono::Utc;
 use mdbook_preprocessor::{
+    Preprocessor, PreprocessorContext,
     book::{Book, BookItem},
     errors::Error,
-    Preprocessor, PreprocessorContext,
 };
-use serde_json::{json, Map, Value};
+use serde_json::{Map, Value, json};
 use std::cmp::Reverse;
 use std::fs;
 use std::path::Path;

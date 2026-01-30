@@ -1,5 +1,5 @@
 use mdbook_content_loader::ContentLoader;
-use mdbook_preprocessor::{errors::Error, Preprocessor, MDBOOK_VERSION};
+use mdbook_preprocessor::{MDBOOK_VERSION, Preprocessor, errors::Error};
 use semver::{Version, VersionReq};
 use std::io;
 use std::process;
