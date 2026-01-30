@@ -13,8 +13,9 @@ use std::path::Path;
 pub struct ContentLoader;
 
 impl ContentLoader {
-    pub fn new() -> ContentLoader {
-        ContentLoader
+    #[must_use]
+    pub const fn new() -> Self {
+        Self
     }
 }
 
@@ -25,7 +26,7 @@ impl Default for ContentLoader {
 }
 
 impl Preprocessor for ContentLoader {
-    fn name(&self) -> &str {
+    fn name(&self) -> &'static str {
         "content-loader"
     }
 
@@ -38,7 +39,7 @@ impl Preprocessor for ContentLoader {
         let payload: Value = match load_collections(&index_path) {
             Ok(data) => data,
             Err(e) => {
-                log::warn!("content-loader: {}", e);
+                log::warn!("content-loader: {e}");
                 return Ok(book);
             }
         };
@@ -60,7 +61,7 @@ impl Preprocessor for ContentLoader {
         };
 
         let script = format!(
-            r#"<script>window.CONTENT_COLLECTIONS = {};</script>"#,
+            r"<script>window.CONTENT_COLLECTIONS = {};</script>",
             serde_json::to_string(&payload)?
         );
 
@@ -85,7 +86,7 @@ impl Preprocessor for ContentLoader {
 
 fn load_collections(path: &Path) -> anyhow::Result<Value> {
     if !path.exists() {
-        bail!("content-collections.json not found at {:?}", path);
+        bail!("content-collections.json not found at { }", path.display());
     }
 
     let content = fs::read_to_string(path).context("Failed to read content-collections.json")?;
@@ -94,12 +95,12 @@ fn load_collections(path: &Path) -> anyhow::Result<Value> {
     let entries: Vec<Value> = json_val
         .get("entries")
         .and_then(|v| v.as_array())
-        .map(|a| a.to_vec())
+        .cloned()
         .unwrap_or_default();
 
     let published: Vec<_> = entries
         .into_iter()
-        .filter(|e| !e.get("draft").and_then(|v| v.as_bool()).unwrap_or(false))
+        .filter(|e| !e.get("draft").and_then(Value::as_bool).unwrap_or(false))
         .collect();
 
     let mut collections: Map<String, Value> = Map::new();

@@ -1,6 +1,6 @@
 [package]
 name = "mdbook-content-loader"
-version = "0.1.10"
+version = "0.2.10"
 edition = "2024"
 authors = ["T. Sawyer saylesss88@github.com"]
 description = "Injects content-collections.json into mdBook pages as a global variable"
@@ -17,7 +17,7 @@ keywords = [
 categories = ["command-line-utilities", "web-programming", "development-tools"]
 homepage = "https://github.com/saylesss88/mdbook-content-loader"
 documentation = "https://docs.rs/mdbook-content-loader"
-exclude = [".github/*", ".gitignore", "book/*"]
+exclude = [".github/*", ".gitignore", "book/*", "tests/"]
 
 [dependencies]
 mdbook-preprocessor = "0.5.1"
@@ -28,3 +28,11 @@ env_logger = "0.11.8"
 chrono = {version = "0.4", features = ["clock"]}
 anyhow = "1.0"
 semver = "1.0"
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+strip = true
+panic = "abort"
+debug = false
