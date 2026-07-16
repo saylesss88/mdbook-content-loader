@@ -1,11 +1,11 @@
-use anyhow::{Context, bail};
+use anyhow::{bail, Context};
 use chrono::Utc;
 use mdbook_preprocessor::{
-    Preprocessor, PreprocessorContext,
     book::{Book, BookItem},
     errors::Error,
+    Preprocessor, PreprocessorContext,
 };
-use serde_json::{Map, Value, json};
+use serde_json::{json, Map, Value};
 use std::cmp::Reverse;
 use std::fs;
 use std::path::Path;
@@ -34,7 +34,7 @@ impl Preprocessor for ContentLoader {
         // mdBook 0.5.1: Config has a typed book.src (PathBuf)
         let src = ctx.config.book.src.to_str().unwrap_or("src");
         let src_dir = ctx.root.join(src);
-        let index_path = src_dir.join("content-collections.json");
+        let index_path = ctx.root.join("content-collections.json");
 
         let payload: Value = match load_collections(&index_path) {
             Ok(data) => data,
